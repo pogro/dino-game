@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -10,15 +13,23 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #f0f0f0;
+    touch-action: manipulation;
+    overflow: hidden;
 }
 
 .game-container {
     position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 #gameCanvas {
     border: 2px solid #000;
     background-color: #fff;
+    width: 100%;
+    height: auto;
+    touch-action: none;
 }
 
 #score {
@@ -28,4 +39,45 @@ body {
     font-family: Arial, sans-serif;
     font-size: 20px;
     font-weight: bold;
+    color: #000;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+#mobile-controls {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #666;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #gameCanvas {
+        height: 50vh;
+        object-fit: contain;
+    }
+
+    #mobile-controls {
+        display: block;
+    }
+
+    #score {
+        font-size: 24px;
+        top: 5%;
+    }
 }

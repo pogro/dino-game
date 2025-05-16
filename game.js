@@ -2,16 +2,20 @@ class Game {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
-        this.canvas.width = 800;
-        this.canvas.height = 300;
+        
+        // Set initial canvas size
+        this.resizeCanvas();
+        
+        // Handle window resizing
+        window.addEventListener('resize', () => this.resizeCanvas());
         
         // Load images
         this.dinoImage = new Image();
         this.dinoImage.src = 'assets/images/—Pngtree—cartoon cute green short leg_6237974.png';
         
         // Adjust dino size to match the image proportions
-        const dinoWidth = 50;  // Adjust these values to match your image
-        const dinoHeight = 50; // Adjust these values to match your image
+        const dinoWidth = 50;
+        const dinoHeight = 50;
         
         // Initialize clouds
         this.clouds = [
@@ -40,12 +44,55 @@ class Game {
         this.gameOver = false;
         this.ground = this.canvas.height - 20;
 
-        // Event listeners
+        // Event listeners for both desktop and mobile
         document.addEventListener('keydown', (e) => this.handleInput(e));
-        document.addEventListener('touchstart', () => this.jump());
+        document.addEventListener('touchstart', (e) => this.handleTouch(e));
+        document.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+
+        // Prevent default touch behaviors
+        document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
 
         // Start the game loop
         this.gameLoop();
+    }
+
+    resizeCanvas() {
+        const container = this.canvas.parentElement;
+        const containerWidth = container.clientWidth;
+        const containerHeight = window.innerHeight * 0.5; // 50% of viewport height on mobile
+        
+        // Set canvas size maintaining aspect ratio
+        const aspectRatio = 800 / 300; // Original canvas dimensions
+        let width = containerWidth;
+        let height = width / aspectRatio;
+        
+        // If height is too large, constrain by height instead
+        if (height > containerHeight) {
+            height = containerHeight;
+            width = height * aspectRatio;
+        }
+        
+        this.canvas.width = width;
+        this.canvas.height = height;
+        
+        // Update ground position
+        this.ground = this.canvas.height - 20;
+        
+        // Update dino position
+        if (this.dino) {
+            this.dino.y = this.canvas.height - this.dino.height - 20;
+        }
+    }
+
+    handleTouch(e) {
+        e.preventDefault();
+        if (!this.dino.jumping) {
+            this.jump();
+        }
+    }
+
+    handleTouchEnd(e) {
+        e.preventDefault();
     }
 
     handleInput(event) {
