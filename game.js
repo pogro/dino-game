@@ -32,14 +32,14 @@ class Game {
             height: dinoHeight,
             jumping: false,
             velocity: 0,
-            gravity: 0.8,
-            jumpForce: -15
+            gravity: 1.2,    // Increased gravity for faster falling
+            jumpForce: -18   // Increased jump force for more responsive jumps
         };
 
         this.obstacles = [];
         this.score = 0;
-        this.gameSpeed = 5;
-        this.spawnInterval = 2000;
+        this.gameSpeed = 8;  // Increased from 5 to 8 for faster gameplay
+        this.spawnInterval = 1500; // Decreased from 2000 to 1500 for more frequent obstacles
         this.lastSpawnTime = 0;
         this.gameOver = false;
         this.ground = this.canvas.height - 20;
@@ -173,7 +173,7 @@ class Game {
         // Draw and update clouds
         this.clouds.forEach((cloud, index) => {
             this.drawCloud(cloud.x, cloud.y);
-            cloud.x -= this.gameSpeed * 0.5;
+            cloud.x -= this.gameSpeed * 0.7; // Increased cloud speed
             if (cloud.x < -50) {
                 cloud.x = this.canvas.width + 50;
                 cloud.y = 30 + Math.random() * 60;
