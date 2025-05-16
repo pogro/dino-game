@@ -86,7 +86,9 @@ class Game {
 
     handleTouch(e) {
         e.preventDefault();
-        if (!this.dino.jumping) {
+        if (this.gameOver) {
+            this.reset();
+        } else if (!this.dino.jumping) {
             this.jump();
         }
     }
@@ -249,7 +251,7 @@ class Game {
             this.ctx.textAlign = 'center';
             this.ctx.fillText('Game Over!', this.canvas.width / 2, this.canvas.height / 2);
             this.ctx.font = '24px Arial';
-            this.ctx.fillText('Press R to restart', this.canvas.width / 2, this.canvas.height / 2 + 40);
+            this.ctx.fillText('Press R or tap to restart', this.canvas.width / 2, this.canvas.height / 2 + 40);
         }
     }
 
