@@ -5,10 +5,6 @@ class Game {
         this.canvas.width = 800;
         this.canvas.height = 300;
         
-        // Initialize sounds
-        this.jumpSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAASAAAeMwAUFBQUFCIiIiIiIjAwMDAwPz8/Pz8/TU1NTU1NW1tbW1tbc3Nzc3ODg4ODg4OPj4+Pj4+cnJycnJycqqqqqqqqs7Ozs7OztbW1tbW1wcHBwcHB0dHR0dHR3d3d3d3d5ubm5ubm8vLy8vLy//////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAQKAAAAAAAAHjOZTf9/AAAAAAAAAAAAAAAAAAAAAP/7kGQAAANUMEoFPeACNQV40KEYABEY41g5vAAA9RjpZxRwAImU+W8eshaFpAQgALAAYALATx/nYDYCMJ0HITQYYA7AH4c7MoGsnCMU5pnW+OQnBcDrQ9Xx7w37/D+PimYavV8elKUpT5fqx5VjV6vZ38eJR48eRKa9KUp7v396UgPHkQwMAAAAAA//8MAOp39CECAAhlIEEIIECBAgTT1oj///tEQYT0wgEIYxgDC09aIiE7u7u7uIiIz+LtoIQGE/+XAGYLjpTAIOGYYy0ZACgDgSNFxC7YYiINocwERjAEDhIy0mRoGwAE7lOTBsGhj1qrXNCU9GrgwSPr80jj0dIpT9DRUNHKJbRxiWSiifVHuD2b0EbjLkOUzSXztP3uE1JpHzV6NPq+f3P5T0/f/lNH7lWTavQ5Xz1yLVe653///qf93B7f/vMdaKJAAJAMAIwIMAHMpzDkoYwD8CR717zVb8/p54P3MikXGCEWhQOEAOAdP6v8b8oNL/EzdnROC8Zo+z+71O8VVAGIKFEglKbidkoLam0mAFiwo0ZoVExf/7kmQLgAQyZFxvPWAENcVKXeK0ABAk2WFMaSNIzBMptBYfArbkZgpWjEQpcmjxQoG2qREWQcvpzuuIm29THt3ElhDNlvwzh0qOIlZrj1yhvHhktEJ7k4be5OqbHwzh4v8aMht1cSyPSwqmmkg8es7svCJyVPJYVwXF0kjBDAzDyQQhBN1ACBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECAA==');
-        this.crashSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAAeAAAUrAAGBgYGCgoKCgoODg4ODhISEhISFhYWFhYaGhoaGh4eHh4eIiIiIiImJiYmJioqKioqLi4uLi4yMjIyMjY2NjY2Ojo6Ojo+Pj4+PkJCQkJCRkZGRkZKSkpKSk5OTk5OUlJSUlJWVlZWVlpaWlpaXl5eXl5iYmJiYmZmZmZmaWlpaWltbW1tbXFxcXFxdXV1dXV5eXl5eX19fX19gYGBgYGFhYWFhYmJiYmJjY2NjY2RkZGRkZWVlZWVmZmZmZmdnZ2dnZ2dnZ2doaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGh//sQZAAP8AAAaQAAAAgAAA0gAAABAAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
-        
         // Load images
         this.dinoImage = new Image();
         this.dinoImage.src = 'assets/images/—Pngtree—cartoon cute green short leg_6237974.png';
@@ -32,14 +28,14 @@ class Game {
             height: dinoHeight,
             jumping: false,
             velocity: 0,
-            gravity: 1.2,    // Increased gravity for faster falling
-            jumpForce: -18   // Increased jump force for more responsive jumps
+            gravity: 1.2,
+            jumpForce: -18
         };
 
         this.obstacles = [];
         this.score = 0;
-        this.gameSpeed = 8;  // Increased from 5 to 8 for faster gameplay
-        this.spawnInterval = 1500; // Decreased from 2000 to 1500 for more frequent obstacles
+        this.gameSpeed = 8;
+        this.spawnInterval = 1500;
         this.lastSpawnTime = 0;
         this.gameOver = false;
         this.ground = this.canvas.height - 20;
@@ -62,9 +58,6 @@ class Game {
         if (!this.dino.jumping) {
             this.dino.jumping = true;
             this.dino.velocity = this.dino.jumpForce;
-            // Play jump sound
-            this.jumpSound.currentTime = 0;
-            this.jumpSound.play().catch(e => console.log("Audio play failed:", e));
         }
     }
 
@@ -109,11 +102,6 @@ class Game {
 
             // Collision detection
             if (this.checkCollision(this.dino, obstacle)) {
-                if (!this.gameOver) {
-                    // Play crash sound only on initial collision
-                    this.crashSound.currentTime = 0;
-                    this.crashSound.play().catch(e => console.log("Audio play failed:", e));
-                }
                 this.gameOver = true;
             }
         }
@@ -173,7 +161,7 @@ class Game {
         // Draw and update clouds
         this.clouds.forEach((cloud, index) => {
             this.drawCloud(cloud.x, cloud.y);
-            cloud.x -= this.gameSpeed * 0.7; // Increased cloud speed
+            cloud.x -= this.gameSpeed * 0.7;
             if (cloud.x < -50) {
                 cloud.x = this.canvas.width + 50;
                 cloud.y = 30 + Math.random() * 60;
@@ -224,8 +212,8 @@ class Game {
         this.dino.velocity = 0;
         this.obstacles = [];
         this.score = 0;
-        this.gameSpeed = 5;
-        this.spawnInterval = 2000;
+        this.gameSpeed = 8;
+        this.spawnInterval = 1500;
         this.lastSpawnTime = 0;
         this.gameOver = false;
         document.getElementById('score').textContent = 'Score: 0';
