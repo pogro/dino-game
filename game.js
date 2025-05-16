@@ -38,8 +38,8 @@ class Game {
 
         this.obstacles = [];
         this.score = 0;
-        this.gameSpeed = 8;
-        this.spawnInterval = 1500;
+        this.gameSpeed = 5;
+        this.spawnInterval = 2000;
         this.lastSpawnTime = 0;
         this.gameOver = false;
         this.ground = this.canvas.height - 20;
@@ -59,7 +59,7 @@ class Game {
     resizeCanvas() {
         const container = this.canvas.parentElement;
         const containerWidth = container.clientWidth;
-        const containerHeight = window.innerHeight * 0.5; // 50% of viewport height on mobile
+        const containerHeight = window.innerHeight * 0.7; // Increased from 0.5 to 0.7 (70% of viewport height)
         
         // Set canvas size maintaining aspect ratio
         const aspectRatio = 800 / 300; // Original canvas dimensions
@@ -133,14 +133,15 @@ class Game {
                 height: 50
             });
             this.lastSpawnTime = currentTime;
-            this.spawnInterval = Math.max(1000, 2000 - this.score / 10);
+            this.spawnInterval = Math.max(1500, 2000 - this.score / 20);
         }
     }
 
     updateObstacles() {
         for (let i = this.obstacles.length - 1; i >= 0; i--) {
             const obstacle = this.obstacles[i];
-            obstacle.x -= this.gameSpeed;
+            const currentSpeed = this.gameSpeed + (this.score / 50);
+            obstacle.x -= currentSpeed;
 
             // Remove obstacles that are off screen
             if (obstacle.x + obstacle.width < 0) {
@@ -261,8 +262,8 @@ class Game {
         this.dino.velocity = 0;
         this.obstacles = [];
         this.score = 0;
-        this.gameSpeed = 8;
-        this.spawnInterval = 1500;
+        this.gameSpeed = 5;
+        this.spawnInterval = 2000;
         this.lastSpawnTime = 0;
         this.gameOver = false;
         document.getElementById('score').textContent = 'Score: 0';
